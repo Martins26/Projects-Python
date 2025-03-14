@@ -1,166 +1,90 @@
-import os
-def print_help(): 
-    """This function can be used to print out the help message."""
-    print("Allowed commands:")
-    print("add firstName lastName month day year")
-    print("list") 
-    print("delete number")
-    print("search name")
-    print("save filename")
-    print("load filename")
-    print("help")
-    print("echo on")
-    print("echo off")
-    print("quit")
+from fpdf import FPDF
 
-class Birthday_People:
-    def __init__(self,firstName,lastName,day,month,year):
-        self.firstName=firstName
-        self.lastName=lastName
-        self.month=month
-        self.day=day
-        self.year=year
+class Employee:
+    def __init__(self, first_name, last_name, email, phone):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.phone = phone
 
     def processed(self):
-        return '{} {}, {}/{}/{}'. format(self.firstName,self.lastName,self.day,self.month,self.year)
+        return f'{self.first_name} {self.last_name}, Email: {self.email}, Phone: {self.phone}'
 
+def save_to_pdf(employees, filename):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    pdf.cell(200, 10, txt="Employee Contact List", ln=True, align='C')
 
-def add_birthday(Birthday_Person, people_list, echo,list_of_files):
-    person_list = []
-    success = False
-    while not success:
-        try:
-            check_month = int(Birthday_Person[3])
-            check_day = int(Birthday_Person[4])
-            check_year = int(Birthday_Person[5])
-            success = True
-        except (ValueError, TypeError):
-            print("Please try again")
-            return
-    Process_Person = Birthday_People(Birthday_Person[1], Birthday_Person[2], Birthday_Person[3], Birthday_Person[4], Birthday_Person[5])
-    person_list = [Process_Person.firstName, Process_Person.lastName, Process_Person.month, Process_Person.day, Process_Person.year]
-    people_list.append(person_list)
-    if echo==True:
-        print(f'Added "{Process_Person.processed()}" to book')
-    check_commands(people_list, echo,list_of_files)
+    for employee in employees:
+        pdf.cell(200, 10, txt=employee.processed(), ln=True)
 
-
-def list_values(people_list, echo,list_of_files):
-    if echo==True:
-        print('here is a list of the names you added')
-    for i in range (len(people_list)):
-        print(f'{i+1}. {people_list[i][0]}  {people_list[i][1]}, {people_list[i][2]}/{people_list[i][3]}/{people_list[i][4]}')
-    check_commands(people_list, echo,list_of_files)
-
-
-def delete_values(people_list, listing, echo,list_of_files):
-    num_to_delete = int(listing[1])
-
-    if 1 <= num_to_delete <= len(people_list):
-        deleted_person = people_list.pop(num_to_delete - 1)
-        if echo:
-            print(f"Deleted {deleted_person[0]} {deleted_person[1]}")
-        check_commands(people_list, listing, echo,list_of_files)
-    else:
-        print("Invalid entry number.")
-        check_commands(people_list, listing, echo,list_of_files)
-
-def search_birthdays(people_list, listing, echo,list_of_files):
-    search_name = listing[1].lower()
-    for i in range(len(people_list)):
-        first_name = people_list[i][0].lower()
-        last_name = people_list[i][1].lower()
-        if search_name in first_name or search_name in last_name:
-            if not found:
-                print(f'Birthdays with a name of "{listing[1]}":')
-                found = True
-            print(f'{people_list[i][0]} {people_list[i][1]}, {people_list[i][2]}/{people_list[i][3]}/{people_list[i][4]}')
-            check_commands(people_list,echo,list_of_files)
-    if found==False:
-        print(f"I'm sorry, but there are no people with that name")
-        check_commands(people_list,echo,list_of_files)    
-
-
-
-def save_to_file(people_list, listing, echo,list_of_files):
-    name_of_file=listing[1]
-    list_of_files=list()
-    input_to_file=open(f'{name_of_file}', "a")
-    for i in range(len(people_list)):
-        line=(Birthday_People(people_list[i][0],people_list[i][1],people_list[i][2],people_list[i][3],people_list[i][4]))
-        input_to_file.write(line.processed()+'\n')
-    input_to_file.close()
-    list_of_files.append(name_of_file)
-    if echo==True:
-        print(f"Saved to file: {name_of_file}")
-    check_commands(people_list,echo,list_of_files)
-
-
-
-def load_file(people_list,listing, echo,list_of_files):
-    if listing[1] in list_of_files:  
-        file=open(listing[1], "r")
-        lines=file.readlines()
-        file.close()
-        modified_list=list()
-        for i in range(len(lines)-1):
-            processed_line = lines[i].strip().split()  
-            modified_list.append(processed_line) 
-        for i in range (len(lines)-1):
-            people_list.append(modified_list[i])
-        if echo==True:
-            print(f'loaded {listing[1]} to list')
-        check_commands(people_list, echo,list_of_files)
-    else:
-        print("this file does not exists")
-        check_commands(people_list,listing, echo,list_of_files)
-
-
-def check_commands(people_list, echo,list_of_files):
-    prompt = input("> ")
-    listing=prompt.split()
-    if listing[0]=="add":
-        add_birthday(listing,people_list, echo,list_of_files)
-    elif listing[0]=="list":
-        list_values(people_list, echo,list_of_files)
-    elif listing[0]=="delete":
-        delete_values(people_list, listing, echo,list_of_files)
-    elif listing[0]=="search": #does not work yet
-        search_birthdays(people_list, listing, echo,list_of_files)
-    elif listing[0]=="save":
-        save_to_file(people_list, listing, echo,list_of_files)
-    elif listing[0]== "load":
-        load_file(people_list,listing, echo,list_of_files)
-    elif listing[0]=="help":
-        print_help()
-    elif listing[0]=="quit":
-        print ("Thank you for using the program")
-    elif listing[0]=="echo":
-        if listing[1]=="on":
-            echo=True
-            check_commands(people_list,echo,list_of_files)
-        elif listing[1]=="off":
-            echo=False
-            check_commands(people_list,echo,list_of_files)
-        else:
-            print("Unknown command")
-            check_commands(people_list,echo,list_of_files)
-    else:
-        print("Unknown command")
-
+    pdf.output(filename)
+    print(f"Results have been saved to '{filename}'.")
 
 def main():
-    """The main function of the Birthday Book program."""
-    # Students should add code to this function and write additional
-    # functions and classes as appropriate.  Do not pass 
-    # any arguments to the main function.  We call the main function
-    # to test your program.  You should delete this comment.
-    echo=True
-    people_list=list()
-    list_of_files=list()
-    check_commands(people_list, echo, list_of_files)
+    employees = []
+    echo = True
 
+    def print_help():
+        print("Allowed commands:")
+        print("add firstName lastName email phone")
+        print("list")
+        print("delete number")
+        print("save filename")
+        print("help")
+        print("quit")
 
-# Do not modify the code below.  Write all of your code above.
+    def add_employee(command):
+        if len(command) != 5:
+            print("Invalid format. Use: add firstName lastName email phone")
+            return
+        employee = Employee(command[1], command[2], command[3], command[4])
+        employees.append(employee)
+        if echo:
+            print(f'Added "{employee.processed()}" to the contact book.')
+
+    def list_employees():
+        if not employees:
+            print("No employees added yet.")
+            return
+        for idx, emp in enumerate(employees, 1):
+            print(f"{idx}. {emp.processed()}")
+
+    def delete_employee(command):
+        try:
+            index = int(command[1]) - 1
+            if 0 <= index < len(employees):
+                removed = employees.pop(index)
+                print(f"Deleted: {removed.processed()}")
+            else:
+                print("Invalid entry number.")
+        except (ValueError, IndexError):
+            print("Invalid format. Use: delete number")
+
+    def save_employees(command):
+        filename = command[1] + ".pdf"
+        save_to_pdf(employees, filename)
+
+    while True:
+        command = input("> ").split()
+        if not command:
+            continue
+        if command[0] == "add":
+            add_employee(command)
+        elif command[0] == "list":
+            list_employees()
+        elif command[0] == "delete":
+            delete_employee(command)
+        elif command[0] == "save":
+            save_employees(command)
+        elif command[0] == "help":
+            print_help()
+        elif command[0] == "quit":
+            print("Thank you for using the Employee Contact Manager.")
+            break
+        else:
+            print("Unknown command. Type 'help' for a list of commands.")
+
 if __name__ == "__main__":
     main()
