@@ -1,0 +1,65 @@
+def main():
+    total_grade = 0
+    num_fail = 0
+    num_pass = 0
+    max_grade_of_class = None
+    min_grade_of_class = None
+
+    # Input and validation for maximum grade
+    maximum_grade = int(input("What was the maximum possible mark on the exam? "))
+    while maximum_grade <= 0:
+        print("Error, value must be greater than zero. Please try again")
+        maximum_grade = int(input("What was the maximum possible mark on the exam? "))
+
+    # Input and validation for number of marks
+    num_marks = int(input("How many student marks do you have to enter? "))
+    while num_marks <= 0:
+        print("Error, value must be greater than zero. Please try again")
+        num_marks = int(input("How many student marks do you have to enter? "))
+
+    print("Please enter grades below:")
+
+    for i in range(num_marks):
+        grade_value = float(input())
+
+        # Validate grade input
+        while grade_value < 0 or grade_value > maximum_grade:
+            print("Error, number is not within range")
+            grade_value = float(input())
+
+        # Update total grade
+        total_grade += grade_value
+
+        # Determine max and min grades
+        if max_grade_of_class is None or grade_value > max_grade_of_class:
+            max_grade_of_class = grade_value
+        if min_grade_of_class is None or grade_value < min_grade_of_class:
+            min_grade_of_class = grade_value
+
+        # Pass/fail criteria based on 50% of maximum grade
+        if grade_value >= (maximum_grade / 2):
+            num_pass += 1
+        else:
+            num_fail += 1
+
+    avg_grade = total_grade / num_marks
+
+    # Results to be saved
+    results = (
+        f"Average grade is: {avg_grade}\n"
+        f"Number of students who failed (<=50%): {num_fail}\n"
+        f"Number of students who passed (>=50%): {num_pass}\n"
+        f"The highest grade is: {max_grade_of_class}\n"
+        f"The lowest grade is: {min_grade_of_class}\n"
+    )
+
+    # Print to console
+    print(results)
+
+    # Write results to an external file
+    with open("student_results.txt", "w") as file:
+        file.write(results)
+
+    print("Results have been saved to 'student_results.txt'.")
+
+main()
