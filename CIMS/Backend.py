@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, render_template
 from fpdf import FPDF
 import math
 import uuid
@@ -174,6 +174,9 @@ def get_report():
         as_attachment=True,
         download_name='report.pdf'
     )
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
