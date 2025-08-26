@@ -1,3 +1,3 @@
-# Projects
+#Martin Silva-Diaz Personal Website
 Martin Silva-Diaz
-Developped code for various programming tasks with real-world applications.
+A website designed by me to showcase an overview of myself and current projects.
