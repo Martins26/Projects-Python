@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=3">
     <title>Martin Silva-Diaz: About Me</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Calibri, sans-serif;
             margin: 0;
             padding: 0;
             background-color: black;
@@ -22,7 +23,7 @@
         }
         #header::before {
             content: "";
-            background: rgba(0, 0, 0, 0.521); /* Dark overlay */
+            background: rgba(0, 0, 0, 0.7); /* Dark overlay */
             position: absolute;
             top: 0;
             bottom: 0;
@@ -33,14 +34,28 @@
         #header h1, #header h3 {
             position: relative;
             z-index: 1;
+            margin-bottom: 0%;
         }
         #header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 3.5em;
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 400;
+            font-style: Regular;
+        }
+        #biography h2 {
+            margin: 0;
+            font-size: 2em;
+            font-family: 'Libre Baskerville';
+            font-weight: 200;
+            font-style: Regular;
         }
         #header h3 {
             font-size: 1.5em;
-            margin-top: 5px;
+            margin: 0%;
+            font-family: 'Calibri';
+            font-weight: 200;
+            font-style: Regular;
         }
         #nav {
             padding: 10px;
@@ -52,6 +67,9 @@
         #nav ul {
             list-style: none;
             padding: 0;
+            font-family: 'Libre Baskerville';
+            font-weight: 200;
+            font-style: Regular;
         }
         #nav li {
             display: inline;
@@ -64,40 +82,56 @@
         }
         #content {
             display: flex;
-            align-items: start;
+            align-items: flex-start;
+            gap: 50px;          /* space between image and text */
+            max-width: 1200px;   /* keeps layout from stretching too wide */
+            margin: 0 auto;     /* centers content */
+            background-color: black;
             padding: 20px;
-            background-color: black; /* Black background for the biography section */
-            margin: 0 auto;
-            max-width: 800px;
             border-radius: 10px;
-            color: white; /* White text */
+            color: white;
         }
-        #placeholder-image {
-            width: 40%;
-            height: auto;
-            margin-right: 20px;
-            align-self: start;
-            background-color: grey;
+        #image img{
+            margin-top: 50px;
+            max-width: 500px;   /* or any size you prefer */
+            height: auto;       /* keep proportions */
+            display: block;     /* removes extra spacing under image */
+            border: 3px solid aliceblue;
         }
         #biography {
-            width: 60%;
+            width: 300px;
+            flex: 1;
+        }
+        #biography p{
+            font-size: 1.2em;
+            font-family: 'Libre Baskerville';
         }
         p {
             line-height: 1.6;
             text-align: left;
+            flex: 1;
+            font-size: 1em;
+        }
+        #footer {
+            background-color: rgb(0,0,0);  /* solid footer color */
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 80px;
+            font-size: 0.9em;
+            width: 100%;
+            position: relative;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body>
-    <div id="header">
-        <div class="header-content" style="font-family: 'Inter', Arial, sans-serif; color:#fff;">
-            <h1 style="font-family:'Great Vibes', cursive; font-weight:400; letter-spacing:.5px;">
-                Martin Silva-Diaz
-            </h1>
-            <h3>Engineering Undergraduate</h3>
-            <h3>University of Waterloo</h3>
-        </div> 
-    </div>
+<div id="header">
+    <h1>Martin Silva-Diaz</h1>
+    <h3>Engineering Undergraduate</h3>
+    <h3>University of Waterloo</h3>
+</div>
+
     <div id="nav">
         <ul>
             <li><a href="index.html">About Me</a></li>
@@ -105,22 +139,23 @@
         </ul>
     </div>
     <div id="content">
-        <div id="placeholder-image"><!-- Placeholder Image --></div>
+        <div id="image">
+            <img src="images/profileimage2.jpg" alt="Profile Picture">
+        </div>
         <div id="biography">
-            <h2>About Myself</h2>
+            <h2>About Me</h2>
             <p>
-                A bilingual first-year Management Engineering student at the University of Waterloo, 
-                possessing strong expertise in coding, data analysis, and project management. 
-                Demonstrated capability in leading and collaborating efficiently, 
-                both in volunteer roles and team-based settings. 
-                Actively pursuing opportunities to specialize in data analytics, 
-                business intelligence, software development, artificial intelligence, 
-                and information, product, and project management systems, 
-                with a focus on decision software and modeling applications. 
-                Skilled in Python, VBA, and Excel, 
-                with a dedication to ongoing learning through academic studies and practical experience.
+            A bilingual first-year Management Engineering student at the University of Waterloo with strong skills in programming,
+             data analysis, and project management. Experienced in leading and collaborating effectively in both volunteer and 
+             team-based environments. Pursuing specialization in data analytics, business intelligence, software development, 
+             artificial intelligence, and information, product, and project management systems, with particular interest in 
+             decision-support software and modeling applications. Proficient in Python, VBA, and Excel, with a strong commitment 
+             to continuous learning through academic studies and hands-on experience.
             </p>
         </div>
+    </div>
+    <div id="footer">
+        <p>&copy; 2025 Martin Silva-Diaz. All rights reserved.</p>
     </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Martin Silva-Diaz:Projects</title>
@@ -9,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: black;
+            background-color: rgb(15,15,15);
             color: white;
             text-align: center;
         }
@@ -22,7 +23,7 @@
         }
         #header::before {
             content: "";
-            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            background: rgba(0, 0, 0, 0.7); /* Dark overlay */
             position: absolute;
             top: 0;
             bottom: 0;
@@ -33,14 +34,21 @@
         #header h1, #header h3 {
             position: relative;
             z-index: 1;
+            margin-bottom: 0%;
         }
         #header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 3.5em;
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 400;
+            font-style: Regular;
         }
         #header h3 {
             font-size: 1.5em;
-            margin-top: 5px;
+            font-family: 'Calibri';
+            font-weight: 200;
+            font-style: Regular;
+            margin: 0px;
         }
         #nav {
             padding: 10px;
@@ -52,6 +60,9 @@
         #nav ul {
             list-style: none;
             padding: 0;
+            font-family: 'Libre Baskerville';
+            font-weight: 200;
+            font-style: Regular;
         }
         #nav li {
             display: inline;
@@ -62,16 +73,18 @@
             text-decoration: none;
             font-weight: bold;
         }
-        #content {
-            display: flex;
-            align-items: start;
-            padding: 20px;
-            background-color: black;
-            margin: 0 auto;
-            max-width: 800px;
-            border-radius: 10px;
+        #footer {
+            background-color: rgb(0,0,0);  /* solid footer color */
             color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 80px;
+            font-size: 0.9em;
+            width: 100%;
+            position: relative;
+            margin: 0 auto;
         }
+
         #placeholder-image {
             width: 40%;
             height: auto;
@@ -81,6 +94,7 @@
         }
         #projects {
             width: 60%;
+            margin: 0 auto;
         }
         p {
             line-height: 1.6;
@@ -89,6 +103,27 @@
         hr {
             border-color: #fff;
             margin: 20px 0;
+        }
+        #projects h1{
+            font-size: 2em;
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 400;
+            font-style: Regular;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #projects h2{
+            font-size: 1.5em;
+            font-family: 'Libre Baskerville', serif;
+            font-style: Regular;
+            text-align: left;
+        }
+        #projects p{
+            font-size: 1em;
+            margin: 0%;
+            font-family: 'Calibri';
+            font-weight: 200;
+            font-style: Regular;
         }
     </style>
 </head>
@@ -106,19 +141,41 @@
             <li><a href="Projects.html">Projects</a></li>
         </ul>
     </div>
-
-        <a href="https://github.com/Martins26/Projects-Python/blob/main/Cipher" target="blank"><h1>Cipher</h1></a>
+    <div id="projects">
+        <h1>Current Projects</h1>
+        <h2>Stock dashboard</h2>
         <p>
-            <b>Cipher</b> allows you to transform text by replacing specific letters with others based on a mapping you define. You provide two sets of letters: the ones you want to replace (`from_letters`) and their replacements (`to_letters`). The program will then process your input text, replacing the specified letters while preserving the case of each character and leaving everything else unchanged. It’s a simple tool for encoding, decoding, or customizing text transformations.
+            The<a href="https://github.com/Martins26/Projects-Python/blob/main/Cipher" target="blank">
+            <b>Stock Dashboard </b></a> is a portfolio management tool designed to optimize how users track and organize their 
+            investments. It consolidates stocks from multiple brokers into a single interface, allowing users to input and monitor 
+            all their holdings in one place. Built on an PostgresSQL database, it securely manages multiple users and stock records 
+            while ensuring reliable storage and retrieval. The system provides live stock details upon refresh, enabling users 
+            to stay up to date with price changes, analyze performance, and view their total holdings in real time. 
+            By centralizing information, the dashboard reduces the need to manually track assets across different platforms, 
+            improving both accuracy and efficiency. Looking ahead, the platform is designed to evolve into a decision-support tool, 
+            with planned features such as personalized stock suggestions and portfolio optimization insights.
         </p>
-        <a href="https://github.com/Martins26/Projects-Python/blob/main/Contact%20Manager" target="blank"><h1>Contact Manager</h1></a>
+        <h2>Excel Budget Planner</h2>
         <p>
-            <b>Contact Manager</b> functions as a way to help you manage and organize people's birthdays. You can use commands to add new entries, view the list of birthdays, delete entries, search for specific names, save your list to a file, or load it back later. Additionally, it provides an "echo" mode for confirming actions and a "help" command to guide you through available features. It's a simple and interactive way to keep track of important dates.
+            The<a href="https://github.com/Martins26/Projects-Python/blob/main/Contact%20Manager" target="blank"><b> Budget Planner</b></a> is an interactive tool designed to help users manage and 
+            organize important dates such as birthdays with ease. It offers a command-based interface that allows you to add new entries, 
+            view the complete list, delete specific records, and search for names quickly. Users can also save their birthday list to 
+            a file for long-term storage or reload it later for continued use. To enhance usability, the system includes an “echo” 
+            mode that confirms actions as they are performed, as well as a “help” command that guides users through all available features. 
+            By combining simplicity with practical functionality, the Budget Planner ensures that important dates are never forgotten 
+            and can be accessed in a structured, organized manner.
         </p>
-        <a href="https://github.com/Martins26/Projects-Python/blob/main/Grade%20Analyzer" target="blank"><h1>Grade Analyzer</h1></a>
+        <h1>Upcoming Projects</h1>
+        <h2>Ultrasonic Object Detection Robot</h2>
         <p>
-            <b>Grade Analyzer</b> you to input and analyze student exam grades. It calculates and displays the average grade, identifies the highest and lowest grades, and counts how many students passed (scoring at least 50% of the highest grade) or failed. It also ensures input values, such as maximum possible marks and grades, are valid and within specified ranges. This tool helps summarize class performance effectively.
+            The <a href="https://github.com/Martins26/Projects-Python/blob/main/Grade%20Analyzer" target="blank"><b> Ultrasonic detection robot</b></a>
+            The Ultrasonic Detection Robot is an upcoming Arduino-based pathfinder that uses ultrasonic sensors to detect obstacles and 
+            choose safe routes. Designed as a foundation for future robotics work, it demonstrates autonomous navigation with plans to
+             expand into mapping and smarter decision-making.
         </p>
+    </div>
+    <div id="footer">
+        <p>&copy; 2025 Martin Silva-Diaz. All rights reserved.</p>
     </div>
 </body>
 </html>
