@@ -123,6 +123,37 @@
             position: relative;
             margin: 0 auto;
         }
+        /* mobile web design*/
+        @media (max-width: 768px) {
+        #content {
+            flex-direction: column;   /* vertical stack */
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+        }
+
+        #image, #biography {
+            width: 100%;
+            max-width: 700px;         /* comfortable reading width */
+        }
+
+        #biography {
+            margin-top: 8px;
+            text-align: left;
+        }
+
+        #biography p {
+            padding: 0 10px;          /* side breathing room */
+            overflow-wrap: anywhere;  /* avoid overflow on long words/URLs */
+        }
+
+        #nav ul {                   /* keep nav tidy on small screens */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            justify-content: center;
+        }
+        }
     </style>
 </head>
 <body>
